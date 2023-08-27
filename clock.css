@@ -21,6 +21,7 @@
 .container {
     display: flex;
     position: fixed;
+    flex-direction: column;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -158,9 +159,11 @@
 
 #date{
     display: flex;
+    width: 100%;
+    justify-content: center;
     position: absolute;
     background: transparent;
-    top: 75%;
+    top: 120%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
