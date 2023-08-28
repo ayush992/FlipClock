@@ -33,10 +33,10 @@ function start() {
     secs[1].style.order = 4;
     document.getElementById("date").firstElementChild.innerHTML =
         date + " " + weekdays[day] + " " + year;
-    hr[0].innerHTML = calZero(hour) + hour;
-    hr[1].innerHTML = calZero(hour) + hour;
-    min[0].innerHTML = calZero(minute) + minute;
-    min[1].innerHTML = calZero(minute) + minute;
+    hr[0].firstElementChild.innerHTML = calZero(hour) + hour;
+    hr[1].firstElementChild.innerHTML = calZero(hour) + hour;
+    min[0].firstElementChild.innerHTML = calZero(minute) + minute;
+    min[1].firstElementChild.innerHTML = calZero(minute) + minute;
 }
 
 setInterval(clock, 1000);
@@ -51,17 +51,17 @@ function clock() {
             minute = 0;
             hour++;
             if (hour == 24) hour = 0;
-            hr[0].innerHTML = calZero(hour) + hour;
-            hr[1].innerHTML = calZero(hour) + hour;
+            hr[0].firstElementChild.innerHTML = calZero(hour) + hour;
+            hr[1].firstElementChild.innerHTML = calZero(hour) + hour;
         }
-        min[0].innerHTML = calZero(minute) + minute;
-        min[1].innerHTML = calZero(minute) + minute;
+        min[0].firstElementChild.innerHTML = calZero(minute) + minute;
+        min[1].firstElementChild.innerHTML = calZero(minute) + minute;
     } else {
         sec += 1;
     }
 
-    secs[0].innerHTML = calZero(sec) + sec;
-    secs[1].innerHTML = calZero(sec) + sec;
+    secs[0].firstElementChild.innerHTML = calZero(sec) + sec;
+    secs[1].firstElementChild.innerHTML = calZero(sec) + sec;
     setTimeout(flip, 800, sec, 2);
 }
 
@@ -71,11 +71,11 @@ function calZero(elem) {
 }
 
 function flip(val, idx) {
-    front[idx].innerHTML = calZero(val) + val;
+    front[idx].firstElementChild.innerHTML = calZero(val) + val;
     if (val === 59) {
         val = -1;
     }
-    back[idx].innerHTML = calZero(val + 1) + (val + 1);
+    back[idx].firstElementChild.innerHTML = calZero(val + 1) + (val + 1);
     if (idx == 0) {
         let cls = hr;
     }else if(idx==1){
@@ -83,12 +83,11 @@ function flip(val, idx) {
     }else{
         cls = secs;
     }
-    cls[0].innerHTML = calZero(val + 1) + (val + 1);
+    cls[0].firstElementChild.innerHTML = calZero(val + 1) + (val + 1);
     document.querySelectorAll(".inner")[idx].classList.toggle("active");
     audio.play();
     setTimeout(() => {
         document.querySelectorAll(".inner")[idx].classList.toggle("active");
-        // setTimeout(audio.play(),50);
     }, 400);
     if(val==-1 && idx == 2){
         flip(minute, 1);

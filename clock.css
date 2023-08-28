@@ -1,4 +1,4 @@
-:root{
+:root {
     --bgclr: #313638;
     --txtsize: 180px;
     --card-color: rgb(255, 255, 255);
@@ -17,7 +17,14 @@
 *::before {
     box-sizing: border-box;
 }
-
+p{
+    background-color: transparent;
+    padding-top: 55%;
+}
+.odd > p{
+    padding-top: 0;
+    padding-bottom: 55%;
+}
 .container {
     display: flex;
     position: fixed;
@@ -53,20 +60,17 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    padding-top: 60%;
+    /* padding-top: 60%; */
     font-size: var(--txtsize);
 
-    text-shadow:
-		0 0 6px rgba(202,228,225, 0.5),
-		0 0 10px rgba(245, 105, 40, 0.52),
-		0 0 10px rgba(245, 84, 10, 0.92),
-		0 0 10px rgba(245, 84, 10, 0.78),
-		0 0 10px rgba(245, 84, 10, 0.92);
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.5),
+        0 0 10px rgba(245, 105, 40, 0.52), 0 0 10px rgba(245, 84, 10, 0.92),
+        0 0 10px rgba(245, 84, 10, 0.78), 0 0 10px rgba(245, 84, 10, 0.92);
 }
 
 .odd {
     padding-top: 0;
-    padding-bottom: 60%;
+    /* padding-bottom: 60%; */
 }
 .flip {
     display: grid;
@@ -88,7 +92,7 @@
     transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: transparent; 
+    background: transparent;
 }
 
 .inner {
@@ -116,48 +120,46 @@
     background-color: var(--card-color);
     justify-content: center;
     align-items: center;
-    padding-top: 60%;
     font-size: var(--txtsize);
     overflow: hidden;
 
-    text-shadow:
-        0 0 6px rgba(202,228,225, 0.5),
-        0 0 10px rgba(245, 105, 40, 0.52),
-        0 0 10px rgba(245, 84, 10, 0.92),
-        0 0 10px rgba(245, 84, 10, 0.78),
-        0 0 10px rgba(245, 84, 10, 0.92);
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.5),
+        0 0 10px rgba(245, 105, 40, 0.52), 0 0 10px rgba(245, 84, 10, 0.92),
+        0 0 10px rgba(245, 84, 10, 0.78), 0 0 10px rgba(245, 84, 10, 0.92);
 }
 .front {
     transition: background-color 0.35s;
 }
 .back {
     transform: rotateY(-180deg) rotate(180deg);
-    padding-top: 0;
-    padding-bottom: 60%;
 }
-
+.back > p{
+    padding-top: 0;
+    padding-bottom: 55%;
+}
 .inner.active {
     opacity: 1;
     animation: autoflip;
     animation-duration: 0.6s;
 }
-.inner.active .front{
+.inner.active .front {
     opacity: 1;
     background-color: var(--flipped-color);
-}.inner.active .back{
+}
+.inner.active .back {
     opacity: 1;
 }
 @keyframes autoflip {
-    25%{
+    25% {
         top: 0;
     }
-    75%{
+    75% {
         top: 5px;
         transform: rotateX(-180deg);
     }
 }
 
-#date{
+#date {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -167,8 +169,50 @@
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
-#date > p{
+#date > p {
     font-size: 80px;
     background: transparent;
     color: rgb(245, 84, 10);
+}
+
+@media screen and (max-device-width: 420px) {
+    .container {
+        width: inherit;
+    }
+    p{
+        padding-top: 70%;
+    }
+    .odd > p{
+        padding-top: 0;
+        padding-bottom: 70%;
+    }
+    .back > p{
+        padding-bottom: 70%;
+    }
+    .hour,
+    .minute,
+    .sec {
+        width: 80px;
+        height: 50px;
+        font-size: 60px;
+    }
+    .front, .back{
+        height: 50px;
+        font-size: 60px;
+    }
+    @keyframes autoflip {
+        25%{
+            top: 0;
+        }
+        75%{
+            top: 3px;
+            transform: rotateX(-180deg);
+        }
+    }
+    #date{
+        top: 75%;
+    }
+    #date > p {
+        font-size: 30px;
+    }
 }
