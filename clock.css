@@ -184,10 +184,10 @@ p{
     }
     .odd > p{
         padding-top: 0;
-        padding-bottom: 70%;
+        padding-bottom: 60%;
     }
     .back > p{
-        padding-bottom: 70%;
+        padding-bottom: 60%;
     }
     .hour,
     .minute,
